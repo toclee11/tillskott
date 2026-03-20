@@ -1,0 +1,31 @@
+{
+  "inputCount": 3,
+  "deduplicatedCount": 2,
+  "rankedCount": 2,
+  "reviewEntries": [
+    {
+      "id": "rev-pipeline-1",
+      "substanceId": "sub-omega-3",
+      "submittedBy": "pipeline-bot",
+      "submittedAt": "2026-03-20T22:48:51.309Z",
+      "claim": "Large review of omega-3 across CVD endpoints.",
+      "rationale": "Auto-ingested candidate requires clinical and methodological review before publication.",
+      "sourceIds": [
+        "cand-src-003"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "rev-pipeline-2",
+      "substanceId": "sub-vitamin-d",
+      "submittedBy": "pipeline-bot",
+      "submittedAt": "2026-03-20T22:48:51.310Z",
+      "claim": "Updated pooled estimate for falls and fracture outcomes.",
+      "rationale": "Auto-ingested candidate requires clinical and methodological review before publication.",
+      "sourceIds": [
+        "cand-src-001"
+      ],
+      "status": "pending"
+    }
+  ]
+}
