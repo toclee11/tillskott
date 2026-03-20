@@ -46,7 +46,7 @@ async function PhysiologySourceCitations({
           return (
             <li key={id}>
               <a
-                className="font-medium text-sky-900 underline"
+                className="font-medium text-emerald-700 underline hover:text-emerald-800"
                 href={src.url}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -122,10 +122,10 @@ export default async function SubstancePage({
     <main className="mx-auto w-full max-w-5xl p-6 md:p-10 dark:bg-zinc-950">
       <header className="space-y-2">
         <Link
-          className="text-sm text-zinc-700 underline dark:text-zinc-300"
+          className="text-sm font-medium text-emerald-700 hover:text-emerald-800"
           href={`/search?audience=${audience}`}
         >
-          Tillbaka till sök
+          ← Tillbaka till sök
         </Link>
         <h1 className="text-3xl font-bold text-black dark:text-white">
           {substance.name}
@@ -278,7 +278,7 @@ export default async function SubstancePage({
               ) : null}
               {source ? (
                 <a
-                  className="mt-2 inline-block text-sm font-medium text-sky-900 underline"
+                  className="mt-2 inline-block text-sm font-medium text-emerald-700 hover:text-emerald-800"
                   href={source.url}
                   target="_blank"
                   rel="noopener noreferrer"

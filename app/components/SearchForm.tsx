@@ -9,9 +9,11 @@ type Suggestion = { label: string; value: string };
 export default function SearchForm({
   initialQuery,
   audience,
+  id,
 }: {
   initialQuery: string;
   audience: Audience;
+  id?: string;
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
@@ -80,8 +82,9 @@ export default function SearchForm({
       <form ref={formRef} className="flex flex-wrap items-center gap-2" action="/search" method="get">
         <input type="hidden" name="audience" value={audienceValue} />
         <input
+          id={id}
           aria-label="Sökterm"
-          className="min-w-[260px] flex-1 rounded border border-zinc-300 bg-white px-3 py-2 text-zinc-900 placeholder:text-zinc-500 outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2"
+          className="min-w-[260px] flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 shadow-sm placeholder:text-zinc-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:ring-offset-2"
           suppressHydrationWarning
           name="q"
           placeholder="t.ex. vitamin d, b12, magnesium, omega-3"
@@ -118,7 +121,7 @@ export default function SearchForm({
           }}
         />
         <button
-          className="rounded bg-sky-700 px-4 py-2 text-white hover:bg-sky-800"
+          className="rounded-lg bg-emerald-700 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-emerald-800"
           suppressHydrationWarning
           type="submit"
         >
@@ -141,8 +144,8 @@ export default function SearchForm({
                 aria-selected={isActive}
                 className={`cursor-pointer px-3 py-2 ${
                   isActive
-                    ? "bg-sky-100 text-zinc-900"
-                    : "hover:bg-zinc-100"
+                    ? "bg-emerald-50 text-zinc-900"
+                    : "hover:bg-zinc-50"
                 }`}
                 onMouseDown={(e) => {
                   // Prevent input blur from closing before click.

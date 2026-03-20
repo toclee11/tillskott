@@ -14,42 +14,48 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const results = await searchSubstances(query);
 
   return (
-    <main className="mx-auto w-full max-w-5xl p-6 md:p-10">
+    <main className="mx-auto w-full max-w-3xl p-6 md:p-10">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Sök evidens</h1>
-        <Link className="text-sm underline" href="/">
-          Till startsidan
+        <Link className="text-sm font-medium text-emerald-700 hover:text-emerald-800" href="/">
+          ← Till startsidan
         </Link>
       </div>
 
+      <h1 className="mt-8 text-2xl font-bold tracking-tight text-zinc-900 md:text-3xl">
+        Sök evidens
+      </h1>
+
       <div className="mt-6">
-        <SearchForm initialQuery={query} audience={audience} />
+        <label htmlFor="search-results" className="mb-2 block text-sm font-medium text-zinc-700">
+          Sök näringsämne eller kosttillskott
+        </label>
+        <SearchForm initialQuery={query} audience={audience} id="search-results" />
       </div>
 
-      <p className="mt-4 text-sm text-zinc-600">
+      <p className="mt-6 text-sm text-zinc-500">
         {results.length} träffar för sökningen &quot;{query || "alla ämnen"}&quot;
       </p>
 
-      <section className="mt-6 space-y-3">
+      <section className="mt-8 space-y-4">
         {results.map((item) => (
           <article
             key={item.id}
-            className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+            className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
           >
-            <h2 className="text-xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+            <h2 className="text-xl font-bold tracking-tight text-zinc-900">
               {item.name}
             </h2>
-            <p className="mt-2 text-sm text-zinc-800 dark:text-zinc-200">
+            <p className="mt-2 text-sm leading-relaxed text-zinc-600">
               {audience === "clinical" ? item.summaryClinical : item.summaryPublic}
             </p>
-            <p className="mt-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <p className="mt-2 text-xs text-zinc-500">
               Synonymer: {item.synonyms.join(", ")}
             </p>
             <Link
-              className="mt-3 inline-block text-sm font-medium text-sky-900 underline dark:text-sky-300"
+              className="mt-3 inline-block text-sm font-medium text-emerald-700 hover:text-emerald-800"
               href={`/substances/${item.slug}?audience=${audience}`}
             >
-              Öppna faktablad
+              Öppna faktablad →
             </Link>
           </article>
         ))}
