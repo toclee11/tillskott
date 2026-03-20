@@ -10,6 +10,7 @@ import {
   listSubstances,
 } from "@/lib/repos/substancesRepo";
 import { getSourceById as repoGetSourceById } from "@/lib/repos/sourcesRepo";
+import { isMandatoryTrustedSourceType } from "@/lib/trusted-sources";
 import {
   getReviewQueue as repoGetReviewQueue,
   upsertReviewEntry as repoUpsertReviewEntry,
@@ -72,6 +73,17 @@ export async function searchSubstances(query: string): Promise<Substance[]> {
 
 export async function getSourceById(sourceId: string) {
   return repoGetSourceById(sourceId);
+}
+
+/** True if substance has any evidence from Cochrane, SBU or meta-analysis. */
+export async function hasMandatoryTrustedEvidence(
+  substance: Substance,
+): Promise<boolean> {
+  for (const rec of substance.evidence) {
+    const src = await getSourceById(rec.sourceId);
+    if (src && isMandatoryTrustedSourceType(src.type)) return true;
+  }
+  return false;
 }
 
 export async function getEvidenceScore(substance: Substance): Promise<number> {

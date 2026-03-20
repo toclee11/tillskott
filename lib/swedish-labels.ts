@@ -1,4 +1,21 @@
-import type { EvidenceQuality, ReviewStatus } from "@/lib/types";
+import type { EvidenceQuality, ReviewStatus, SourceType } from "@/lib/types";
+
+export function sourceTypeToSwedish(type: SourceType) {
+  switch (type) {
+    case "cochrane_review":
+      return "Cochrane";
+    case "sbu_report":
+      return "SBU";
+    case "pubmed_meta_analysis":
+      return "Meta-analys";
+    case "pubmed_systematic_review":
+      return "Systematisk översikt";
+    case "rct":
+      return "RCT";
+    default:
+      return type;
+  }
+}
 
 export function categoryToSwedish(category: "vitamin" | "mineral" | "supplement") {
   switch (category) {
