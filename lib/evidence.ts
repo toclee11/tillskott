@@ -75,6 +75,15 @@ export async function getSourceById(sourceId: string) {
   return repoGetSourceById(sourceId);
 }
 
+/** Returns the canonical URL for a source. Ensures PubMed links use correct format. */
+export function getSourceUrl(source: { id: string; url: string; pubmedId?: string }): string {
+  const pmid = source.pubmedId ?? source.id.match(/^src-pubmed-(\d+)$/)?.[1];
+  if (pmid) {
+    return `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+  }
+  return source.url;
+}
+
 /** True if substance has any evidence from Cochrane, SBU or meta-analysis. */
 export async function hasMandatoryTrustedEvidence(
   substance: Substance,

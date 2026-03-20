@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getSubstanceBySlug, getSourceById } from "@/lib/evidence";
+import { getSourceById, getSourceUrl, getSubstanceBySlug } from "@/lib/evidence";
 import {
   categoryToSwedish,
   evidenceQualityToSwedish,
@@ -51,7 +51,7 @@ async function PhysiologySourceCitations({
             <li key={id}>
               <a
                 className="font-medium text-emerald-700 underline hover:text-emerald-800"
-                href={src.url}
+                href={getSourceUrl(src)}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -312,7 +312,7 @@ export default async function SubstancePage({
               {source ? (
                 <a
                   className="mt-4 inline-flex items-center text-sm font-medium text-emerald-700 hover:text-emerald-800"
-                  href={source.url}
+                  href={getSourceUrl(source)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
