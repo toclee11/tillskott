@@ -18,6 +18,11 @@ npm install
 npm run dev
 ```
 
+## Adminläge (redigera faktakort i browsern)
+- Sätt `ADMIN_PASSWORD` i `.env.local`.
+- Öppna `/admin/login` och logga in.
+- Redigera substanskort och evidenskort under `/admin`.
+
 ## Viktiga scripts
 ```bash
 npm run test

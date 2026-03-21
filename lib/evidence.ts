@@ -9,7 +9,10 @@ import {
   getSubstanceBySlug as repoGetSubstanceBySlug,
   listSubstances,
 } from "@/lib/repos/substancesRepo";
-import { getSourceById as repoGetSourceById } from "@/lib/repos/sourcesRepo";
+import {
+  getSourceById as repoGetSourceById,
+  listSources as repoListSources,
+} from "@/lib/repos/sourcesRepo";
 import { isMandatoryTrustedSourceType } from "@/lib/trusted-sources";
 import {
   getReviewQueue as repoGetReviewQueue,
@@ -73,6 +76,10 @@ export async function searchSubstances(query: string): Promise<Substance[]> {
 
 export async function getSourceById(sourceId: string) {
   return repoGetSourceById(sourceId);
+}
+
+export async function getSources() {
+  return repoListSources();
 }
 
 /** Returns the canonical URL for a source. Ensures PubMed links use correct format. */
